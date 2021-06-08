@@ -87,7 +87,7 @@ class ProcessTest {
 		ProcessRun process = new ProcessRun();
 		
 		try {
-			String[] dir_rist = {"dir", "c:\\"};
+			String[] dir_rist = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe", ""};
 			process.Execute(dir_rist);
 			process = null;
 		} catch (Exception e) {
@@ -104,7 +104,7 @@ class ProcessTest {
 	void testConsole() {
 		String output = "";
 		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\_SourceDev.Test\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
 		try {
 			output = process.Run(command);
 			System.out.println(output);
@@ -126,7 +126,38 @@ class ProcessTest {
 		return;
 	}
 
-	
+	@Test
+	void testAddCommand() {
+		String output = "";
+		ProcessRun process = new ProcessRun();
+		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		try {
+			output = process.Run(command);
+			Assert.assertTrue(output.contentEquals("\r\n>"));
+			
+			output = process.Command("add(2,3,4)\n");
+			Assert.assertTrue(output.contentEquals("9\r\n>"));
+
+			output = process.Command("add(3,3,3)\n");
+			Assert.assertTrue(output.contentEquals("9\r\n>"));
+
+			output = process.Exit();			
+		}
+		catch (Exception e) {
+			//	In case of exception.
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			//	Read the trace information.
+			e.printStackTrace(pw);
+			String trace = sw.toString();
+			
+			//	Write the trace to console and fail the test.
+			System.out.print(trace);
+			Assert.assertTrue(!trace.isEmpty());
+		}
+		return;
+	}
+
 	/***
 	 * Test the console application runs 
 	 * and execute command-line echo command.
@@ -135,7 +166,7 @@ class ProcessTest {
 	void testEchoCommand() {
 		String output = "";
 		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\_SourceDev.Test\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
 		try {
 			output = process.Run(command);
 			Assert.assertTrue(output.contentEquals("\r\n>"));
@@ -145,6 +176,100 @@ class ProcessTest {
 
 			output = process.Command("echo(Hello world)\n");
 			Assert.assertTrue(output.contentEquals("Hello world\r\n>"));
+
+			output = process.Exit();			
+		}
+		catch (Exception e) {
+			//	In case of exception.
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			//	Read the trace information.
+			e.printStackTrace(pw);
+			String trace = sw.toString();
+			
+			//	Write the trace to console and fail the test.
+			System.out.print(trace);
+			Assert.assertTrue(!trace.isEmpty());
+		}
+		return;
+	}
+	
+	@Test
+	void testSubCommand() {
+		String output = "";
+		ProcessRun process = new ProcessRun();
+		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		try {
+			output = process.Run(command);
+			Assert.assertTrue(output.contentEquals("\r\n>"));
+			
+			output = process.Command("sub(1,1,1)\n");
+			Assert.assertTrue(output.contentEquals("-1\r\n>"));
+
+			output = process.Command("sub(3,3,2)\n");
+			Assert.assertTrue(output.contentEquals("-2\r\n>"));
+
+			output = process.Exit();			
+		}
+		catch (Exception e) {
+			//	In case of exception.
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			//	Read the trace information.
+			e.printStackTrace(pw);
+			String trace = sw.toString();
+			
+			//	Write the trace to console and fail the test.
+			System.out.print(trace);
+			Assert.assertTrue(!trace.isEmpty());
+		}
+		return;
+	}
+	@Test
+	void testMultiCommand() {
+		String output = "";
+		ProcessRun process = new ProcessRun();
+		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		try {
+			output = process.Run(command);
+			Assert.assertTrue(output.contentEquals("\r\n>"));
+			
+			output = process.Command("mul(1,2,3)\n");
+			Assert.assertTrue(output.contentEquals("6\r\n>"));
+
+			output = process.Command("mul(2,3,4)\n");
+			Assert.assertTrue(output.contentEquals("24\r\n>"));
+
+			output = process.Exit();			
+		}
+		catch (Exception e) {
+			//	In case of exception.
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			//	Read the trace information.
+			e.printStackTrace(pw);
+			String trace = sw.toString();
+			
+			//	Write the trace to console and fail the test.
+			System.out.print(trace);
+			Assert.assertTrue(!trace.isEmpty());
+		}
+		return;
+	}
+	@Test
+	void testDivideCommand() {
+		String output = "";
+		ProcessRun process = new ProcessRun();
+		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		try {
+			output = process.Run(command);
+			Assert.assertTrue(output.contentEquals("\r\n>"));
+			
+			output = process.Command("div(1,1,1)\n");
+			Assert.assertTrue(output.contentEquals("1\r\n>"));
+
+			output = process.Command("div(2,2,2)\n");
+			Assert.assertTrue(output.contentEquals("1\r\n>"));
 
 			output = process.Exit();			
 		}
