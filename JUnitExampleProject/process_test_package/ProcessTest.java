@@ -87,6 +87,8 @@ class ProcessTest {
 		ProcessRun process = new ProcessRun();
 		
 		try {
+			//in dir_rist you should change the path to ur own path, make sure u do it before runing 
+			//the test, otherwise you gonna get an error ! 
 			String[] dir_rist = {"dir", "C:\\Users\\ZAHER\\"};
 			process.Execute(dir_rist);
 			process = null;
