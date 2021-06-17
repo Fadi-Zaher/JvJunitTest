@@ -29,6 +29,11 @@ import Process.ProcessRun;
  */
 class ProcessTest {
 
+	String output;
+	
+	ProcessRun process;
+	String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+	static int counter = 0;
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -48,6 +53,9 @@ class ProcessTest {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		 output = "";
+		 process = new ProcessRun();
+		 
 	}
 
 	/**
@@ -55,6 +63,8 @@ class ProcessTest {
 	 */
 	@AfterEach
 	void tearDown() throws Exception {
+	counter++;
+	System.out.println("finished test number : " + String.valueOf(counter));
 	}
 
 
@@ -84,8 +94,6 @@ class ProcessTest {
 	 */	
 	@Test
 	void testCmdDir() {
-		ProcessRun process = new ProcessRun();
-		
 		try {
 			//in dir_rist you should change the path to ur own path, make sure u do it before runing 
 			//the test, otherwise you gonna get an error ! 
@@ -104,9 +112,7 @@ class ProcessTest {
 	 */
 	@Test
 	void testConsole() {
-		String output = "";
-		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		
 		try {
 			output = process.Run(command);
 			System.out.println(output);
@@ -136,9 +142,7 @@ class ProcessTest {
 	 */
 	@Test
 	void testEchoCommand() {
-		String output = "";
-		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		
 		try {
 			output = process.Run(command);
 			Assert.assertTrue(output.contentEquals("\r\n>"));
@@ -167,9 +171,7 @@ class ProcessTest {
 	}
 	@Test
 	void testAddCommand() {
-		String output = "";
-		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+	
 		try {
 			output = process.Run(command);
 			Assert.assertTrue(output.contentEquals("\r\n>"));
@@ -199,9 +201,7 @@ class ProcessTest {
 	
 	@Test
 	void testSubCommand() {
-		String output = "";
-		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		
 		try {
 			output = process.Run(command);
 			Assert.assertTrue(output.contentEquals("\r\n>"));
@@ -231,9 +231,7 @@ class ProcessTest {
 	
 	@Test
 	void testMultiCommand() {
-		String output = "";
-		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		
 		try {
 			output = process.Run(command);
 			Assert.assertTrue(output.contentEquals("\r\n>"));
@@ -262,9 +260,7 @@ class ProcessTest {
 	}
 	@Test
 	void testDivideCommand() {
-		String output = "";
-		ProcessRun process = new ProcessRun();
-		String[] command = {"C:\\Users\\ZAHER\\_SOURCEDIV.TEST\\CPPCONSOLEAPI\\WsCppConsoleAPI\\CppConsoleAPI\\Debug\\CppConsoleAPI.exe",""};
+		
 		try {
 			output = process.Run(command);
 			Assert.assertTrue(output.contentEquals("\r\n>"));
